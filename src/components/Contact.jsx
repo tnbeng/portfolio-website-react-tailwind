@@ -18,7 +18,9 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const baseUrl=process.env.REACT_APP_BASE_URL;
+    
+    // const baseUrl=process.env.REACT_APP_BASE_URL;
+    const baseUrl='https://portfolio-server-production.onrender.com';
     try {
       const response = await fetch(`${baseUrl}/send`, {
         method: 'POST',
