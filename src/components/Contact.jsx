@@ -33,10 +33,10 @@ const Contact = () => {
       });
 
       if (response.ok) {
+        setLoading(false);
         alert('Message sent successfully');
         // Optionally, clear the form after submission
         setFormData({ name: '', email: '', message: '' });
-        setLoading(false);
       } else {
         alert('Failed to send the message');
       }
