@@ -31,7 +31,6 @@ const Footer = () => {
             </form>
           </div>
         </div> */}
-
         <div
           className="border-t border-gray-600 pt-4 flex flex-col md:flex-row 
           justify-between items-center"
