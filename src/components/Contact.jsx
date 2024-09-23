@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FaEnvelope, FaMapMarkedAlt, FaPhone } from 'react-icons/fa'
 
 const Contact = () => {
+  const [loading,setLoading]=useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,6 +18,7 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     
     // const baseUrl=process.env.REACT_APP_BASE_URL;
@@ -33,7 +35,8 @@ const Contact = () => {
       if (response.ok) {
         alert('Message sent successfully');
         // Optionally, clear the form after submission
-        // setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', message: '' });
+        setLoading(false);
       } else {
         alert('Failed to send the message');
       }
@@ -41,6 +44,7 @@ const Contact = () => {
       console.error('Error:', error.message);
       alert('An error occurred while sending the message');
     }
+    setLoading(false);
   };
 
   return (
@@ -103,7 +107,7 @@ const Contact = () => {
                   placeholder='Enter Your Message' />
               </div>
               <button className='bg-gradient-to-r from-green-400 to-blue-500 text-white md:inline transform transition-transform duration-300 hover:scale-105 px-8 py-2 rounded-full'>
-                Send
+                {loading? <span>Sending . . .</span>: <span>send</span>}
               </button>
             </form>
           </div>
